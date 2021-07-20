@@ -2,7 +2,7 @@
 
 counth=0
 countt=0
-for((i=0;i<100;i++))
+while [ $counth -lt 21 -a $countt -lt 21 ]
 do
 flip=$(( RANDOM%2 ))
 if [ $flip -eq 0 ]
@@ -12,6 +12,15 @@ else
 ((countt++))
 fi
 done
-echo "---Out of 100 flips---"
-echo "Number of times heads won is $counth "
-echo "Number of times tails won is $countt "
+echo "Number of Heads=$counth"
+echo "Number of tails=$countt"
+if [ $counth -eq 21 ]
+then
+c=$(( counth-countt ))
+echo "Heads won by $c times"
+fi
+if [ $countt -eq 21 ]
+then
+c=$(( countt-counth ))
+echo "Tails won by $c times"
+fi
